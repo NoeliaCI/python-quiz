@@ -7,7 +7,7 @@ def new_game():
     question_num = 1
 
     for key in questions:
-        print("--------------------------------------------------------------------------------------------------")
+        print("--------------------------------------------------\n")
         print(key)
         """
         Displays all the different options for each question,
@@ -39,8 +39,24 @@ def check_answer(answer, guess):
 
 # This function displays the score 
 
-def display_score():
-    pass
+def display_score(correct_guesses, guesses):
+    print("-------------------------")
+    print("RESULTS")
+    print("-------------------------")
+
+    print("Correct Answers: ", end="")
+    for i in questions:
+        print(questions.get(i), end=" ")
+    print()
+
+    print("Your Answers: ", end="")
+    for i in guesses:
+        print(i, end=" ")
+    print()
+
+    score = int((correct_guesses/len(questions))*100)
+    print("Your score is: "+str(score)+"%")
+
 # This function starts a new game when the player answers yes
 def play_again():
     pass
