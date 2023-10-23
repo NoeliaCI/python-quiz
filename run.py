@@ -1,6 +1,7 @@
 # This function creates a new game when is called
 
 def new_game():
+
     guesses = []
     correct_guesses = 0
     question_num = 1
@@ -8,19 +9,34 @@ def new_game():
     for key in questions:
         print("--------------------------------------------------------------------------------------------------")
         print(key)
+        """
+        Displays all the different options for each question,
+        takes the input answer from the player and
+        converts to uppercase if the user typed lowercase
+
+        """
         for i in options[question_num-1]:
             print(i)
         guess = input("Enter your answer (A, B, C or D): ")
         guess = guess.upper()
         guesses.append(guess)
-        check_answer(questions.get(key), guess)
+
+        correct_guesses += check_answer(questions.get(key), guess)
         question_num += 1
 
+    display_score(correct_guesses, guesses)
 
 # This function checks the answers provided by the user
 
-def check_answer():
-    pass
+def check_answer(answer, guess):
+    
+    if answer == guess:
+        print("CORRECT!")
+        return 1
+    else:
+        print("WRONG!")
+        return 0
+
 # This function displays the score 
 
 def display_score():
